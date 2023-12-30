@@ -29,12 +29,13 @@ router.get('/success' , (req,res,next) =>{
 
  router.post('/ContactUs', (req,res,next) => {
   console.log(req.body);
-  res.redirect('/success');
+  res.redirect('/admin/success');
  console.log("Form successfuly filled");
  }) 
 
- router.post('/success' ,(req,res,next) => {
+ router.get('/success' ,(req,res,next) => {
   console.log(req.body); 
+  res.send('<h3>Form successfuly filled</h3>');
  // res.redirect('/');
 })
 
