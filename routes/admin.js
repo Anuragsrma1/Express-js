@@ -6,32 +6,22 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
+const productsController = require('../controllers/products');
+
+const contactController = require('../controllers/contact');
+
+const successController = require('../controllers/success')
 //   /admin/add-product => get
-router.get('/add-product', (req , res, next) => {
-    res.sendFile(path.join(rootDir , 'views' , 'add-product.html'));
- });
+router.get('/add-product', productsController.getAddProduct);
 
-router.get('/ContactUs' , (req,res,next) =>{
-  res.sendFile(path.join(rootDir,'views', 'contact.html'));
-  
-})
+router.get('/ContactUs' , contactController.getContact);
 
-router.get('/success' , (req,res,next) =>{
-  res.sendFile(path.join(rootDir,'views', 'success.html'));
-  
-})
+router.get('/success' , successController.getSuccess);
 //  /admin/add-product => Post
 
- router.post('/add-product' ,(req,res,next) => {
-   console.log(req.body); 
-   res.redirect('/');
- })
+ router.post('/add-product' , productsController.postAddProduct);
 
- router.post('/ContactUs', (req,res,next) => {
-  console.log(req.body);
-  res.redirect('/admin/success');
- console.log("Form successfuly filled");
- }) 
+ router.post('/ContactUs', contactController.postContact) 
 
  router.get('/success' ,(req,res,next) => {
   console.log(req.body); 
